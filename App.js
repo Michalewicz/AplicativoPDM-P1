@@ -1,12 +1,19 @@
-import { View } from 'react-native';
-import { styles } from './styles.js'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import PaginaProduto from './src/pages/venda_produtos'
+import Home from './src/pages/home/index';
+import PaginaProduto from './src/pages/produtos/index';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.borda}>
-      <PaginaProduto />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="home" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Produtos" component={PaginaProduto} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
