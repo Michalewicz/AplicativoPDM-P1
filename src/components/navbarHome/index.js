@@ -5,14 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 import Logo from '../../img/PrimePizza.png'
 import VoltarBtn from '../../img/bt_back.png'
 
-export default function Navbar() {
+export default function NavbarHome() {
 const navigation = useNavigation();
   return (
-    <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <Ionicons name="arrow-back" size={32} color="black" />
-      </TouchableOpacity>
-
+    <View style={styles.headerContainer}>    
       <Image
         source={require('../../img/PrimePizza.png')}
         style={styles.logo}

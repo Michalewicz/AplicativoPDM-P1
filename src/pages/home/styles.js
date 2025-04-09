@@ -5,14 +5,13 @@ const styles = StyleSheet.create({
       fontSize: 50,
       marginTop: 50,
       textAlign: 'center',
-
     },
 
     borda:{
       borderColor:'black',
       borderWidth: 10,
       flex:1,
-      backgroundColor:'gray',
+      backgroundColor:'silver',
     },
 });
 

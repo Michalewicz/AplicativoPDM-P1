@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
 headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
+    backgroundColor: '#a20000'
   },
   logo: {
-    width: 225,
-    height: 100,
+    width: 275,
+    height: 125,
     marginLeft: 10,
   },
 });
