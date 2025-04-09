@@ -1,21 +1,22 @@
-import { View,Image,Pressable } from 'react-native';
+import { View,Image,TouchableOpacity,Pressable } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/native';
-import Logo from '../../img/PrimePizza.png'
-import VoltarBtn from '../../img/bt_back.png'
 
 export default function Navbar() {
 const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-    <Pressable  onPress={() => navigation.goBack()} >
-    <Image source = {VoltarBtn}/>
-    </Pressable>
-    
-    <Pressable  onPress={() => navigation.navigate('Home')} >
-    <Image source = {Logo} style={styles.logo} />
-    </Pressable>
-
+    <View style={styles.headerContainer}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={32} color="white" />
+      </TouchableOpacity>
+      <Pressable onPress={() => navigation.navigate('Home')}>
+      <Image
+        source={require('../../img/PrimePizza.png')}
+        style={styles.logo}
+        resizeMode="contain"
+      />
+      </Pressable>
     </View>
   );
 }
