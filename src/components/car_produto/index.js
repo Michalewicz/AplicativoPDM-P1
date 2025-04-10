@@ -17,7 +17,7 @@ export default function CarProduto({ nome, preco, quantidade, imagemPath, botaoR
 
   return (
     <View style={styles.card}>
-      <Pressable onPress={() => navigation.navigate(`Produto_${nome}`)}>
+      <Pressable onPress={() => navigation.navigate(`${nome}`)}>
         <Image source={imagem} style={styles.imagem} />
       </Pressable>
       <View style={styles.infoContainer}>

@@ -1,24 +1,24 @@
 {
   "promo": {
-    "titulo": "Promoções",
+    "categoria": "Promoções",
     "imagem": "../img/marguerita.png",
     "nome": "Pizza Marguerita",
     "preco": "35,00"
   },
   "pizza": {
-    "titulo": "Pizzas Especiais",
+    "categoria": "Pizzas Especiais",
     "imagem": "../img/5queijos.png",
     "nome": "Pizza 5 Queijos",
     "preco": "65,50"
   },
   "doce": {
-    "titulo": "Doces",
+    "categoria": "Doces",
     "imagem": "../img/chocolatemorango.png",
     "nome": "Pizza Chocolate e Morango",
     "preco": "40,99"
   },
   "outros": {
-    "titulo": "Outros Produtos",
+    "categoria": "Outros Produtos",
     "imagem": "../img/esfihacarne.png",
     "nome": "Esfiha de Carne",
     "preco": "10,75"

@@ -17,7 +17,6 @@ export default function Carrossel({ categoria }) {
 
   return (
     <View>
-      <Text style={styles.subTitulo}>{item.titulo}</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {Array.from({ length: 6 }).map((_, i) => (
           <Produto

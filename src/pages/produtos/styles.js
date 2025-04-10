@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-    titulo:{
+    tituloNotFound:{
       fontSize: 50,
       marginTop: 50,
-      textAlign: 'center'
+      textAlign: 'center',
+      color:'red',
     },
-
     borda:{
       borderColor:'black',
       borderWidth: 10,

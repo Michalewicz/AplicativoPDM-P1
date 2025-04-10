@@ -7,13 +7,6 @@ const styles = StyleSheet.create({
     marginTop: 5,
     textAlign: 'center',
   },
-  subTitulo: {
-    color: 'red',
-    fontSize: 30,
-    marginLeft: 10,
-    marginTop: 20,
-    fontWeight: 'bold'
-  },
 });
 
 
