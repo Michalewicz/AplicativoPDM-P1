@@ -1,12 +1,10 @@
-import { View,Image,TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View,Image, TouchableOpacity } from 'react-native';
+import { Ionicons, EvilIcons } from '@expo/vector-icons';
 import { styles } from './styles'
 import { useNavigation } from '@react-navigation/native';
-import Logo from '../../img/PrimePizza.png'
-import VoltarBtn from '../../img/bt_back.png'
 
 export default function NavbarHome() {
-const navigation = useNavigation();
+const navigationNavbar = useNavigation();
   return (
     <View style={styles.headerContainer}>    
       <Image
@@ -14,6 +12,18 @@ const navigation = useNavigation();
         style={styles.logo}
         resizeMode="contain"
       />
+      <View style={styles.loginContainer}>
+        <TouchableOpacity
+          style={styles.login}
+          onPress={() => navigationNavbar.navigate('Login')}>
+          <EvilIcons name="user" size={40} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.cart}
+          onPress={() => navigationNavbar.navigate('Carrinho')}>
+          <Ionicons name="cart" size={40} color="white" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

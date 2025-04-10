@@ -11,7 +11,23 @@ headerContainer: {
     width: 275,
     height: 125,
     marginLeft: 10,
+    marginTop: 10
   },
+  loginContainer:{
+      position: 'absolute',
+      right: 20,
+      alignItems: 'center',
+      justifyContent: 'column',
+      height: 70,
+      width: 45,
+      },
+  login: {
+    marginTop: -5
+    },
+  cart: {
+    marginTop:5,
+    marginRight:5
+    },
 });
 
 

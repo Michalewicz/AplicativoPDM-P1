@@ -1,24 +1,35 @@
-import { View,Image,TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { styles } from './styles'
+import { View, Image, TouchableOpacity, Pressable } from 'react-native';
+import { Ionicons, EvilIcons } from '@expo/vector-icons';
+import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
-import Logo from '../../img/PrimePizza.png'
-import VoltarBtn from '../../img/bt_back.png'
 
 export default function Navbar() {
-const navigation = useNavigation();
+  const navigationNavbar = useNavigation();
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <Ionicons name="arrow-back" size={32} color="black" />
+      <TouchableOpacity onPress={() => navigationNavbar.goBack()}>
+        <Ionicons name="arrow-back" size={40} color="white" />
       </TouchableOpacity>
+      <Pressable onPress={() => navigationNavbar.navigate('Home')}>
+        <Image
+          source={require('../../img/PrimePizza.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
+      </Pressable>
 
-      <Image
-        source={require('../../img/PrimePizza.png')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
+      <View style={styles.loginContainer}>
+        <TouchableOpacity
+          style={styles.login}
+          onPress={() => navigationNavbar.navigate('Login')}>
+          <EvilIcons name="user" size={40} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.cart}
+          onPress={() => navigationNavbar.navigate('Carrinho')}>
+          <Ionicons name="cart" size={40} color="white" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
-
