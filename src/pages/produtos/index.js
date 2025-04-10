@@ -7,7 +7,7 @@ export default function Produtos() {
   return (
     <View style={styles.borda}>
       <Navbar />
-      <Text style={styles.titulo}>PrimePizza</Text>
+      <Text style={styles.titulo}>Pizza</Text>
       <ScrollView>
         <Produto/>
       </ScrollView>

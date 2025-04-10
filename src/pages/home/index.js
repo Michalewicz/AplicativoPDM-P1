@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <View style={styles.borda}>
       <NavbarHome />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Carrosel categoria="promo" />
         <Carrosel categoria="pizza" />
         <Carrosel categoria="doce" />
