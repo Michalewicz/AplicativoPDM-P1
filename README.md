@@ -3,7 +3,7 @@
 - Luccas Nicolete Meireles (LuccasNico)
 - Rafael Michalewicz Rodrigues (Michalewicz)
 
-# Aplicativo PDM - Pizzaria Online
+# Aplicativo PDM - PrimePizza
 Este projeto é um aplicativo mobile desenvolvido em React Native com Expo para a disciplina de Programação para Dispositivos Móveis (PDM). A aplicação simula uma pizzaria online, permitindo ao usuário visualizar produtos, realizar login/registro, adicionar itens ao carrinho e finalizar o pedido.
 
 ## Funcionalidades
