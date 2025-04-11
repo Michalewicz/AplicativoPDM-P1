@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, ScrollView, Text, Pressable, Alert, TouchableOpacity, ActivityIndicator,
+import {
+  View,
+  TextInput,
+  ScrollView,
+  Text,
+  Pressable,
+  Alert,
+  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Navbar from '../../components/navbar/index';
@@ -10,6 +18,7 @@ import CarProduto from '../../components/car_produto/index';
 import { Feather } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system';
 import { usuarioLogado } from '../login/index';
+import Slider from '@react-native-community/slider';
 
 export default function Carrinho() {
   const navigation = useNavigation();
@@ -123,11 +132,22 @@ export default function Carrinho() {
               {quantidadeMaxima})
             </Text>
 
-            <TextInput
-              keyboardType="number-pad"
-              value={quantidadeParaRemover}
-              onChangeText={setQuantidadeParaRemover}
-              style={styles.inputModal}
+            <Text style={styles.valorSlider}>
+              {quantidadeParaRemover} unidade(s)
+            </Text>
+
+            <Slider
+              style={{ width: '100%', height: 40 }}
+              minimumValue={1}
+              maximumValue={quantidadeMaxima}
+              step={1}
+              value={parseInt(quantidadeParaRemover)}
+              minimumTrackTintColor="#FF0000"
+              maximumTrackTintColor="#000000"
+              thumbTintColor="#FF0000"
+              onSlidingComplete={(value) =>
+                setQuantidadeParaRemover(value.toString())
+              }
             />
 
             <View style={styles.botoesModal}>

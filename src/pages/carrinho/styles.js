@@ -96,4 +96,10 @@ export const styles = StyleSheet.create({
   textoRemover: {
     color: 'red',
   },
+  valorSlider: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 10,
+  },
 });
