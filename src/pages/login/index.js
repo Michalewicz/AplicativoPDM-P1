@@ -45,6 +45,7 @@ export default function Login() {
   }, []);
 
   const autenticar = async () => {
+    const caminho = FileSystem.documentDirectory + 'usuarios.json';
     try {
       const existe = await FileSystem.getInfoAsync(caminho);
       if (!existe.exists) {
