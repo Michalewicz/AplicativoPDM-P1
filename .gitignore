@@ -8,8 +8,8 @@ node_modules/
 dist/
 web-build/
 expo-env.d.ts
-assets/
 /index.js
+assets/
 
 # Native
 *.orig.*
