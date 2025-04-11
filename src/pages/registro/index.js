@@ -21,13 +21,17 @@ export default function Registro() {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
+  const validarSenha = (senha) => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+    return regex.test(senha);
+  }
 
   const registrar = async () => {
     if (!usuario || !senha || !confirmarSenha || !nome || !email || !endereco) {
       Alert.alert('Erro', 'Preencha todos os campos.');
       return;
     }
-
+    
     if (senha !== confirmarSenha) {
       Alert.alert('Erro', 'As senhas não coincidem.');
       return;

@@ -1,32 +1,15 @@
-import { View, ScrollView, Image, Pressable, Text } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 import Navbar from '../../components/navbar';
 import { styles } from './styles';
 import { usuarioLogado } from '../login/index.js';
-import fotoPerfil from '../../img/fotoperfil.png';
-import { useNavigation } from '@react-navigation/native';
 
 export default function Perfil() {
-  const navigation = useNavigation();
-
-  function desconectar() {
-  /*
-  usuarioLogado = null;
-
-  if (!usuarioLogado) {
-    Alert.alert(
-      'Atenção',
-      'Usuário desconectado com sucesso!'
-    );
-    navigation.navigate('Login');
-  }*/
-}
-
   return (
     <View style={styles.borda}>
       <Navbar />
       <ScrollView contentContainerStyle={styles.scroll}>
         <Text style={styles.titulo}>Perfil do Usuário</Text>
-        <Image source={fotoPerfil} style={styles.imagem} />
+
         <Text style={styles.label}>Nome:</Text>
         <Text style={styles.valor}>{usuarioLogado.nome}</Text>
 
@@ -40,13 +23,7 @@ export default function Perfil() {
         <Text style={styles.valor}>{usuarioLogado.sexo}</Text>
 
         <Text style={styles.label}>Endereço:</Text>
-        <Text style={styles.valor}>
-          {usuarioLogado.endereco || 'Não informado'}
-        </Text>
-
-        <Pressable style={styles.btDesconectar} onPress={desconectar()}>
-          <Text style={styles.txtDesconectar}>Desconectar</Text>
-        </Pressable>
+        <Text style={styles.valor}>{usuarioLogado.endereco || 'Não informado'}</Text>
       </ScrollView>
     </View>
   );
