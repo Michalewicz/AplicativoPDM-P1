@@ -20,7 +20,6 @@ export default function BtAdd({ quantidade = 1 }) {
         carrinho = JSON.parse(conteudo);
       }
 
-      // Adiciona o item a quantidade de vezes informada
       for (let i = 0; i < quantidade; i++) {
         carrinho.itens.push({ nome });
       }
@@ -36,7 +35,13 @@ export default function BtAdd({ quantidade = 1 }) {
   };
 
   return (
-    <Pressable style={styles.btAddCarrinho} onPress={adicionarAoCarrinho}>
+    <Pressable
+      style={({ pressed }) => [
+        styles.btAddCarrinho,
+        pressed && styles.btAddCarrinhoPressed,
+      ]}
+      onPress={adicionarAoCarrinho}
+    >
       <Text style={styles.txtAddCarrinho}>Adicionar ao carrinho</Text>
     </Pressable>
   );
