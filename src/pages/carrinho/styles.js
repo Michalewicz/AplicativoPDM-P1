@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
     paddingTop: 12,
-    paddingBottom: 80, // para garantir espaço acima do rodapé
+    paddingBottom: 80,
   },
   rodape: {
     position: 'absolute',
@@ -37,6 +37,9 @@ export const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 12,
+  },
+  botaoDesativado: {
+    backgroundColor: '#95A5A6',
   },
   textoBotao: {
     color: '#fff',

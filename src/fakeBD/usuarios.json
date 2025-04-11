@@ -4,8 +4,7 @@
     "senha": "admin",
     "nome": "Senhor Administrador",
     "email": "qualque@gmail.com",
-    "idade": "24",
-    "cpf": "12345678910",
+    "endereco": "12345678910",
     "sexo": "Masculino"
     },
   "2": {
@@ -13,8 +12,7 @@
     "senha": "user",
     "nome": "Senhor Usuario",
     "email": "usuario@gmail.com",
-    "idade": "32",
-    "cpf": "12345678911",
+    "endereco": "12345678911",
     "sexo":"Feminino"
   }
 }

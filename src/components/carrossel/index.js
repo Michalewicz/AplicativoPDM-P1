@@ -1,9 +1,8 @@
-import { View, ScrollView, Text } from 'react-native';
+import { View, FlatList } from 'react-native';
 import Produto from '../produto/index';
-import { styles } from './styles';
+import { styles } from './styles.js';
 import dados from '../../fakeBD/produtos.json';
 
-// Mapeia as strings do JSON para require()s válidos
 const imagemMap = {
   "../img/marguerita.png": require("../../img/marguerita.png"),
   "../img/5queijos.png": require("../../img/5queijos.png"),
@@ -13,20 +12,30 @@ const imagemMap = {
 
 export default function Carrossel({ categoria }) {
   const item = dados[categoria.toLowerCase()];
-  const imagem = imagemMap[item.imagem]; // pega imagem usando o mapa
+  const imagem = imagemMap[item.imagem];
+
+  const data = Array.from({ length: 6 }, (_, i) => ({
+    id: `${categoria}-${i}`,
+    imagem,
+    nome: item.nome,
+    preco: item.preco,
+  }));
 
   return (
     <View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {Array.from({ length: 6 }).map((_, i) => (
+      <FlatList
+        horizontal
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
           <Produto
-            key={i}
-            imagem={imagem}
+            imagem={item.imagem}
             nome={item.nome}
             preco={item.preco}
           />
-        ))}
-      </ScrollView>
+        )}
+        showsHorizontalScrollIndicator={false}
+      />
     </View>
   );
 }

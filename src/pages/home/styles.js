@@ -7,8 +7,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   borda: {
-    borderColor: 'black',
-    borderWidth: 10,
     flex: 1,
     backgroundColor: 'silver',
   },
