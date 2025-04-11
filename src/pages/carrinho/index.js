@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  TextInput,
-  ScrollView,
-  Text,
-  Pressable,
-  Alert,
-  TouchableOpacity,
-  ActivityIndicator,
+import { View, TextInput, ScrollView, Text, Pressable, Alert, TouchableOpacity, ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Navbar from '../../components/navbar/index';
@@ -28,6 +20,7 @@ export default function Carrinho() {
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
   const [quantidadeMaxima, setQuantidadeMaxima] = useState(1);
   const [quantidadeParaRemover, setQuantidadeParaRemover] = useState('1');
+
   useEffect(() => {
     const carregarCarrinho = async () => {
       try {
@@ -110,11 +103,7 @@ export default function Carrinho() {
 
   if (isLoading) {
     return (
-      <View
-        style={[
-          styles.containerPrincipal,
-          { justifyContent: 'center', alignItems: 'center' },
-        ]}>
+      <View style={[styles.containerPrincipal, styles.carregandoContainer]}>
         <ActivityIndicator size="large" color="#000" />
         <Text>Carregando carrinho...</Text>
       </View>
@@ -126,31 +115,10 @@ export default function Carrinho() {
       <Navbar />
 
       {modalVisible && (
-        <View
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.5)',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 999,
-          }}>
-          <View
-            style={{
-              width: '80%',
-              backgroundColor: '#fff',
-              padding: 20,
-              borderRadius: 10,
-              elevation: 5,
-            }}>
-            <Text
-              style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>
-              Remover unidades
-            </Text>
-            <Text style={{ marginBottom: 10 }}>
+        <View style={styles.overlayModal}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.modalTitulo}>Remover unidades</Text>
+            <Text style={styles.modalTexto}>
               Quantas unidades deseja remover de "{produtoSelecionado}"? (1 a{' '}
               {quantidadeMaxima})
             </Text>
@@ -159,20 +127,14 @@ export default function Carrinho() {
               keyboardType="number-pad"
               value={quantidadeParaRemover}
               onChangeText={setQuantidadeParaRemover}
-              style={{
-                borderWidth: 1,
-                borderColor: '#ccc',
-                borderRadius: 5,
-                padding: 10,
-                marginBottom: 15,
-              }}
+              style={styles.inputModal}
             />
 
-            <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+            <View style={styles.botoesModal}>
               <Pressable
                 onPress={() => setModalVisible(false)}
-                style={{ marginRight: 15 }}>
-                <Text style={{ color: 'blue' }}>Cancelar</Text>
+                style={styles.botaoCancelar}>
+                <Text style={styles.textoCancelar}>Cancelar</Text>
               </Pressable>
               <Pressable
                 onPress={() => {
@@ -196,7 +158,7 @@ export default function Carrinho() {
                     ]
                   );
                 }}>
-                <Text style={{ color: 'red' }}>Remover</Text>
+                <Text style={styles.textoRemover}>Remover</Text>
               </Pressable>
             </View>
           </View>
@@ -249,21 +211,22 @@ export default function Carrinho() {
                 'Você precisa estar logado para finalizar a compra.'
               );
               navigation.navigate('Login');
-            }else{
+            } else {
               Alert.alert(
-                "Forma de Pagamento",
-                "Por favor, seleciona a forma de pagamento desejada.",
+                'Forma de Pagamento',
+                'Por favor, seleciona a forma de pagamento desejada.',
                 [
                   {
-                    text:"Pix",
+                    text: 'Pix',
                     onPress: () => navigation.navigate('Pagamento'),
                   },
                   {
-                    text:"Cancelar",
-                  }
+                    text: 'Cancelar',
+                  },
                 ]
-              )            
-          }}}
+              );
+            }
+          }}
           disabled={itensCarrinho.length === 0}>
           <Text style={styles.textoBotao}>Finalizar compra</Text>
         </Pressable>

@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
-    backgroundColor:'silver',
+    backgroundColor: 'silver',
   },
   container: {
     paddingHorizontal: 16,
@@ -45,5 +45,55 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  carregandoContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlayModal: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 999,
+  },
+  modalContainer: {
+    width: '80%',
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
+    elevation: 5,
+  },
+  modalTitulo: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  modalTexto: {
+    marginBottom: 10,
+  },
+  inputModal: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 15,
+  },
+  botoesModal: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  botaoCancelar: {
+    marginRight: 15,
+  },
+  textoCancelar: {
+    color: 'blue',
+  },
+  textoRemover: {
+    color: 'red',
   },
 });
