@@ -249,9 +249,21 @@ export default function Carrinho() {
                 'Você precisa estar logado para finalizar a compra.'
               );
               navigation.navigate('Login');
-            }
-            navigation.navigate('Pagamento');
-          }}
+            }else{
+              Alert.alert(
+                "Forma de Pagamento",
+                "Por favor, seleciona a forma de pagamento desejada.",
+                [
+                  {
+                    text:"Pix",
+                    onPress: () => navigation.navigate('Pagamento'),
+                  },
+                  {
+                    text:"Cancelar",
+                  }
+                ]
+              )            
+          }}}
           disabled={itensCarrinho.length === 0}>
           <Text style={styles.textoBotao}>Finalizar compra</Text>
         </Pressable>

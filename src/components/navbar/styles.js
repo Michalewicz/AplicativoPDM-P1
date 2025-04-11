@@ -16,6 +16,7 @@ headerContainer: {
   },
   loginContainer:{
       position: 'absolute',
+      top: 45,
       right: 20,
       alignItems: 'center',
       justifyContent: 'column',
@@ -28,7 +29,8 @@ headerContainer: {
     marginTop: -5
     },
   cart: {
-    marginTop:5
+    marginTop:15,
+    marginRight: 5
     },
 });
 
