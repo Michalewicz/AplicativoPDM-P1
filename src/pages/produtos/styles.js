@@ -8,9 +8,11 @@ const styles = StyleSheet.create({
       color:'red',
     },
     borda:{
-      borderColor:'black',
-      borderWidth: 10,
       flex:1,
+    },
+    titulo:{
+      color:'red',
+      fontSize:50,
     },
 });
 

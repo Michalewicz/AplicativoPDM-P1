@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
-import { Feather } from '@expo/vector-icons';
 
 const imagemMap = {
   '../img/marguerita.png': require('../../img/marguerita.png'),

@@ -1,0 +1,20 @@
+{
+  "1": {
+    "usuario": "admin",
+    "senha": "admin",
+    "nome": "Senhor Administrador",
+    "email": "qualque@gmail.com",
+    "idade": "24",
+    "cpf": "12345678910",
+    "sexo": "Masculino"
+    },
+  "2": {
+    "usuario": "user",
+    "senha": "user",
+    "nome": "Senhor Usuario",
+    "email": "usuario@gmail.com",
+    "idade": "32",
+    "cpf": "12345678911",
+    "sexo":"Feminino"
+  }
+}

@@ -2,6 +2,7 @@ import { View, Image, TouchableOpacity, Pressable } from 'react-native';
 import { Ionicons, EvilIcons } from '@expo/vector-icons';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { usuarioLogado } from '../../pages/login/index';
 
 export default function Navbar() {
   const navigationNavbar = useNavigation();
@@ -21,7 +22,7 @@ export default function Navbar() {
       <View style={styles.loginContainer}>
         <TouchableOpacity
           style={styles.login}
-          onPress={() => navigationNavbar.navigate('Login')}>
+          onPress={() => usuarioLogado==null? navigationNavbar.navigate('Login'):navigationNavbar.navigate('Perfil')}>
           <EvilIcons name="user" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity
