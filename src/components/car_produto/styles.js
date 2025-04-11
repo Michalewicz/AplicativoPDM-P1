@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
   },
   imagem: {
-    width: 80,        
+    width: 80,
     height: 80,
     borderRadius: 10,
     resizeMode: 'stretch',

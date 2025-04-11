@@ -3,16 +3,16 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   borda: {
     flex: 1,
-    backgroundColor: 'silver', 
+    backgroundColor: 'silver',
   },
-  scroll:{
-    marginTop:20,
+  scroll: {
+    marginTop: 20,
   },
   label: {
     fontSize: 20,
     fontWeight: '600',
     marginLeft: '35',
-    color: '#34495E', 
+    color: '#34495E',
     marginBottom: 8,
   },
   input: {
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    placeholderTextColor:"#A9A9A9",
+    placeholderTextColor: '#A9A9A9',
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,

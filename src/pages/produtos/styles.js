@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     width: '90%',
     height: 250,
     marginTop: 20,
-    resizeMode:'stretch'
+    resizeMode: 'stretch',
   },
   titulo: {
     fontSize: 28,
@@ -47,7 +47,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  
   qtSelectorContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -75,5 +74,5 @@ export const styles = StyleSheet.create({
     color: '#333',
     minWidth: 30,
     textAlign: 'center',
-  }
+  },
 });

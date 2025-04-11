@@ -9,8 +9,7 @@ export default function Produtos() {
     <View style={styles.borda}>
       <Navbar />
       <Text style={styles.tituloNotFound}>Produto Não encontrado</Text>
-      <ScrollView>
-      </ScrollView>
+      <ScrollView></ScrollView>
     </View>
   );
 }

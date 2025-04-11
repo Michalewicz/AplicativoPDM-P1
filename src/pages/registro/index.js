@@ -1,5 +1,12 @@
 import { useState } from 'react';
-import {View,ScrollView,Text,TextInput,Pressable,Alert} from 'react-native';
+import {
+  View,
+  ScrollView,
+  Text,
+  TextInput,
+  Pressable,
+  Alert,
+} from 'react-native';
 import Navbar from '../../components/navbar';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -21,7 +28,10 @@ export default function Registro() {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
-
+  const validarSenha = (senha) => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+    return regex.test(senha);
+  }
   const registrar = async () => {
     if (!usuario || !senha || !confirmarSenha || !nome || !email || !endereco) {
       Alert.alert('Erro', 'Preencha todos os campos.');
@@ -37,7 +47,10 @@ export default function Registro() {
       Alert.alert('Erro', 'Formato de e-mail inválido.');
       return;
     }
-
+    if (!validarSenha(senha)) {
+      Alert.alert('Erro', 'Formato de senha inválido.');
+      return;
+    }
     try {
       const caminho = FileSystem.documentDirectory + 'usuarios.json';
 
@@ -69,7 +82,10 @@ export default function Registro() {
         endereco,
       };
 
-      await FileSystem.writeAsStringAsync(caminho, JSON.stringify(usuarios, null, 2));
+      await FileSystem.writeAsStringAsync(
+        caminho,
+        JSON.stringify(usuarios, null, 2)
+      );
 
       Alert.alert('Sucesso', 'Usuário registrado com sucesso!', [
         { text: 'OK', onPress: () => navigation.navigate('Login') },

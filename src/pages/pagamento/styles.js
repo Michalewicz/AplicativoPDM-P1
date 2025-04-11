@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   borda: {
-
     flex: 1,
     backgroundColor: 'silver',
   },
@@ -16,7 +15,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginLeft: 10,
     marginTop: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 });
-export { styles }
+export { styles };

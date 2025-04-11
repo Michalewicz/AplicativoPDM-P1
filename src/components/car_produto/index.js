@@ -10,7 +10,13 @@ const imagemMap = {
   '../img/esfihacarne.png': require('../../img/esfihacarne.png'),
 };
 
-export default function CarProduto({ nome, preco, quantidade, imagemPath, botaoRemover }) {
+export default function CarProduto({
+  nome,
+  preco,
+  quantidade,
+  imagemPath,
+  botaoRemover,
+}) {
   const navigation = useNavigation();
   const imagem = imagemMap[imagemPath];
 
@@ -26,11 +32,7 @@ export default function CarProduto({ nome, preco, quantidade, imagemPath, botaoR
       </View>
 
       {/* Botão de Remover opcional */}
-      {botaoRemover && (
-        <View>
-          {botaoRemover}
-        </View>
-      )}
+      {botaoRemover && <View>{botaoRemover}</View>}
     </View>
   );
 }

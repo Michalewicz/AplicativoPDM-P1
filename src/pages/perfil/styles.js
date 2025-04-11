@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   imagem: {
-    alignSelf:'center', 
-    width: 200, 
-    height: 200
+    alignSelf: 'center',
+    width: 200,
+    height: 200,
   },
   valor: {
     fontSize: 18,

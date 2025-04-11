@@ -4,10 +4,10 @@ import { styles } from './styles.js';
 import dados from '../../fakeBD/produtos.json';
 
 const imagemMap = {
-  "../img/marguerita.png": require("../../img/marguerita.png"),
-  "../img/5queijos.png": require("../../img/5queijos.png"),
-  "../img/chocolatemorango.png": require("../../img/chocolatemorango.png"),
-  "../img/esfihacarne.png": require("../../img/esfihacarne.png"),
+  '../img/marguerita.png': require('../../img/marguerita.png'),
+  '../img/5queijos.png': require('../../img/5queijos.png'),
+  '../img/chocolatemorango.png': require('../../img/chocolatemorango.png'),
+  '../img/esfihacarne.png': require('../../img/esfihacarne.png'),
 };
 
 export default function Carrossel({ categoria }) {
@@ -28,11 +28,7 @@ export default function Carrossel({ categoria }) {
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Produto
-            imagem={item.imagem}
-            nome={item.nome}
-            preco={item.preco}
-          />
+          <Produto imagem={item.imagem} nome={item.nome} preco={item.preco} />
         )}
         showsHorizontalScrollIndicator={false}
       />

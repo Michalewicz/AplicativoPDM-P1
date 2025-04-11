@@ -22,7 +22,11 @@ export default function Navbar() {
       <View style={styles.loginContainer}>
         <TouchableOpacity
           style={styles.login}
-          onPress={() => usuarioLogado==null? navigationNavbar.navigate('Login'):navigationNavbar.navigate('Perfil')}>
+          onPress={() =>
+            usuarioLogado == null
+              ? navigationNavbar.navigate('Login')
+              : navigationNavbar.navigate('Perfil')
+          }>
           <EvilIcons name="user" size={40} color="white" />
         </TouchableOpacity>
         <TouchableOpacity

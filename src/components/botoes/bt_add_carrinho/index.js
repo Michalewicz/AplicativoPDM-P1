@@ -24,9 +24,15 @@ export default function BtAdd({ quantidade = 1 }) {
         carrinho.itens.push({ nome });
       }
 
-      await FileSystem.writeAsStringAsync(caminho, JSON.stringify(carrinho, null, 2));
+      await FileSystem.writeAsStringAsync(
+        caminho,
+        JSON.stringify(carrinho, null, 2)
+      );
 
-      Alert.alert('Sucesso', `${quantidade}x ${nome} adicionado(s) ao carrinho!`);
+      Alert.alert(
+        'Sucesso',
+        `${quantidade}x ${nome} adicionado(s) ao carrinho!`
+      );
       navigation.navigate('Carrinho');
     } catch (error) {
       console.error('Erro ao adicionar ao carrinho:', error);
@@ -40,8 +46,7 @@ export default function BtAdd({ quantidade = 1 }) {
         styles.btAddCarrinho,
         pressed && styles.btAddCarrinhoPressed,
       ]}
-      onPress={adicionarAoCarrinho}
-    >
+      onPress={adicionarAoCarrinho}>
       <Text style={styles.txtAddCarrinho}>Adicionar ao carrinho</Text>
     </Pressable>
   );

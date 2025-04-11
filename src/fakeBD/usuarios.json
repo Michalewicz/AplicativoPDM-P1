@@ -6,13 +6,5 @@
     "email": "qualque@gmail.com",
     "endereco": "12345678910",
     "sexo": "Masculino"
-    },
-  "2": {
-    "usuario": "user",
-    "senha": "user",
-    "nome": "Senhor Usuario",
-    "email": "usuario@gmail.com",
-    "endereco": "12345678911",
-    "sexo":"Feminino"
-  }
+    }
 }

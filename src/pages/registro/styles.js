@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   borda: {
     flex: 1,
-    backgroundColor: 'silver', 
+    backgroundColor: 'silver',
   },
   container: {
     flex: 1,
@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    placeholderTextColor:"#A9A9A9",
+    placeholderTextColor: '#A9A9A9',
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,

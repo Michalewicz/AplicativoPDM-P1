@@ -6,8 +6,7 @@ export default function QtSelector({ quantidade, setQuantidade }) {
     <View style={styles.qtSelectorContainer}>
       <TouchableOpacity
         onPress={() => quantidade > 1 && setQuantidade(quantidade - 1)}
-        style={styles.qtButton}
-      >
+        style={styles.qtButton}>
         <Text style={styles.qtButtonText}>-</Text>
       </TouchableOpacity>
 
@@ -15,8 +14,7 @@ export default function QtSelector({ quantidade, setQuantidade }) {
 
       <TouchableOpacity
         onPress={() => setQuantidade(quantidade + 1)}
-        style={styles.qtButton}
-      >
+        style={styles.qtButton}>
         <Text style={styles.qtButtonText}>+</Text>
       </TouchableOpacity>
     </View>

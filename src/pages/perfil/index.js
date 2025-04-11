@@ -1,25 +1,12 @@
-import { View, ScrollView, Image, Pressable, Text } from 'react-native';
+import { View, ScrollView, Image, Pressable, Text, Alert } from 'react-native';
 import Navbar from '../../components/navbar';
 import { styles } from './styles';
-import { usuarioLogado } from '../login/index.js';
+import { usuarioLogado, desconectarUsuario } from '../login/index.js';
 import fotoPerfil from '../../img/fotoperfil.png';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Perfil() {
   const navigation = useNavigation();
-
-  function desconectar() {
-  /*
-  usuarioLogado = null;
-
-  if (!usuarioLogado) {
-    Alert.alert(
-      'Atenção',
-      'Usuário desconectado com sucesso!'
-    );
-    navigation.navigate('Login');
-  }*/
-}
 
   return (
     <View style={styles.borda}>
@@ -44,7 +31,13 @@ export default function Perfil() {
           {usuarioLogado.endereco || 'Não informado'}
         </Text>
 
-        <Pressable style={styles.btDesconectar} onPress={desconectar()}>
+        <Pressable
+          style={styles.btDesconectar}
+          onPress={() => {
+            desconectarUsuario();
+            Alert.alert('Atenção', 'Usuário desconectado com sucesso!');
+            navigation.navigate('Login');
+          }}>
           <Text style={styles.txtDesconectar}>Desconectar</Text>
         </Pressable>
       </ScrollView>

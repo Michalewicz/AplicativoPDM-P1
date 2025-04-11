@@ -19,20 +19,24 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Produtos" component={PaginaProduto} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Registro" component={Registro} />
         <Stack.Screen name="Carrinho" component={Carrinho} />
-        <Stack.Screen name="Pagamento" component={Pagamento} />     
-        <Stack.Screen name="Perfil" component={Perfil} />    
-        
+        <Stack.Screen name="Pagamento" component={Pagamento} />
+        <Stack.Screen name="Perfil" component={Perfil} />
+
         <Stack.Screen name="Pizza Marguerita" component={PizzaMarguerita} />
         <Stack.Screen name="Pizza 5 Queijos" component={Pizza5Queijos} />
-        <Stack.Screen name="Pizza Chocolate e Morango" component={PizzachocolateMorango} />
+        <Stack.Screen
+          name="Pizza Chocolate e Morango"
+          component={PizzachocolateMorango}
+        />
         <Stack.Screen name="Esfiha de Carne" component={EsfihaCarne} />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
