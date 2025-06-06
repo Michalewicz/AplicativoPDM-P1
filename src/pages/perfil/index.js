@@ -4,9 +4,33 @@ import { styles } from './styles';
 import { usuarioLogado, desconectarUsuario } from '../login/index.js';
 import fotoPerfil from '../../img/fotoperfil.png';
 import { useNavigation } from '@react-navigation/native';
+import api from '../../services/api';
+import React, { useState, useEffect } from 'react';
 
 export default function Perfil() {
   const navigation = useNavigation();
+
+  const [endrco, setEndrco] = useState(null);
+
+  useEffect(() => {
+    const fetchEndereco = async () => {
+      if (usuarioLogado && usuarioLogado.endereco) {
+        try {
+          const response = await api.get('/' + usuarioLogado.endereco + '/json/');
+          setEndrco(response.data);
+        } catch (error) {
+          console.error('Erro ao buscar endereço:', error);
+        }
+      }
+    };
+
+    fetchEndereco();
+  }, []);
+
+  const end =
+    endrco
+      ? `${endrco.logradouro}, ${endrco.bairro}, ${endrco.localidade} - ${endrco.uf}`
+      : 'Não informado';
 
   return (
     <View style={styles.borda}>
@@ -15,21 +39,19 @@ export default function Perfil() {
         <Text style={styles.titulo}>Perfil do Usuário</Text>
         <Image source={fotoPerfil} style={styles.imagem} />
         <Text style={styles.label}>Nome:</Text>
-        <Text style={styles.valor}>{usuarioLogado.nome}</Text>
+        <Text style={styles.valor}>{usuarioLogado?.nome || 'Não informado'}</Text>
 
         <Text style={styles.label}>Usuário:</Text>
-        <Text style={styles.valor}>{usuarioLogado.usuario}</Text>
+        <Text style={styles.valor}>{usuarioLogado?.usuario || 'Não informado'}</Text>
 
         <Text style={styles.label}>Email:</Text>
-        <Text style={styles.valor}>{usuarioLogado.email}</Text>
+        <Text style={styles.valor}>{usuarioLogado?.email || 'Não informado'}</Text>
 
         <Text style={styles.label}>Sexo:</Text>
-        <Text style={styles.valor}>{usuarioLogado.sexo}</Text>
+        <Text style={styles.valor}>{usuarioLogado?.sexo || 'Não informado'}</Text>
 
         <Text style={styles.label}>Endereço:</Text>
-        <Text style={styles.valor}>
-          {usuarioLogado.endereco || 'Não informado'}
-        </Text>
+        <Text style={styles.valor}>{end}</Text>
 
         <Pressable
           style={styles.btDesconectar}

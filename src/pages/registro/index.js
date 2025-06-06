@@ -12,7 +12,6 @@ import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import * as FileSystem from 'expo-file-system';
 import { Picker } from '@react-native-picker/picker';
-import api from '../../services/api';
 
 export default function Registro() {
   const navigation = useNavigation();
@@ -33,6 +32,10 @@ export default function Registro() {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
     return regex.test(senha);
   };
+  const validarEndereco = (endereco) => {
+    const regex = /^\d{8}$/;
+    return regex.test(endereco);
+  };
   const registrar = async () => {
     if (!usuario || !senha || !confirmarSenha || !nome || !email || !endereco) {
       Alert.alert('Erro', 'Preencha todos os campos.');
@@ -50,6 +53,10 @@ export default function Registro() {
     }
     if (!validarSenha(senha)) {
       Alert.alert('Erro', 'Formato de senha inválido.');
+      return;
+    }
+    if (!validarEndereco(endereco)) {
+      Alert.alert('Erro', 'Formato de CEP inválido.');
       return;
     }
     try {
@@ -169,7 +176,7 @@ export default function Registro() {
           style={styles.input}
           value={endereco}
           onChangeText={setEndereco}
-          placeholder="Digite seu endereço"
+          placeholder="Digite seu CEP"
           placeholderTextColor="#888"
         />
 
