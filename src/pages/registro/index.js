@@ -12,6 +12,7 @@ import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import * as FileSystem from 'expo-file-system';
 import { Picker } from '@react-native-picker/picker';
+import api from '../../services/api';
 
 export default function Registro() {
   const navigation = useNavigation();
@@ -31,7 +32,7 @@ export default function Registro() {
   const validarSenha = (senha) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
     return regex.test(senha);
-  }
+  };
   const registrar = async () => {
     if (!usuario || !senha || !confirmarSenha || !nome || !email || !endereco) {
       Alert.alert('Erro', 'Preencha todos os campos.');
