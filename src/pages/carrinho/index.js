@@ -10,11 +10,12 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Navbar from '../../components/navbar/index';
+import Navbar from '../../components/navbar';
+import BottonBar from '../../components/botton_bar';
 import dadosCarrinho from '../../fakeBD/dados_carrinho.json';
 import produtos from '../../fakeBD/produtos.json';
 import { styles } from './styles';
-import CarProduto from '../../components/car_produto/index';
+import CarProduto from '../../components/car_produto';
 import { Feather } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system';
 import { usuarioLogado } from '../login/index';
@@ -185,36 +186,43 @@ export default function Carrinho() {
         </View>
       )}
 
-      <ScrollView style={styles.container}>
-        {nomesUnicos.map((nome, index) => {
-          const produto = Object.values(produtos).find((p) => p.nome === nome);
-          if (!produto) return null;
+      <ScrollView contentContainerStyle={{ paddingBottom: 140 }}>
+        {nomesUnicos.length === 0 ? (
+          <Text style={{ textAlign: 'center', marginTop: 30, fontSize:30 }}>
+            Seu carrinho está vazio 😕
+          </Text>
+        ) : (
+          nomesUnicos.map((nome, index) => {
+            const produto = Object.values(produtos).find(
+              (p) => p.nome === nome
+            );
+            if (!produto) return null;
 
-          const quantidade = contador[nome];
-          const precoTotal = (
-            parseFloat(produto.preco.replace(',', '.')) * quantidade
-          )
-            .toFixed(2)
-            .replace('.', ',');
+            const quantidade = contador[nome];
+            const precoTotal = (
+              parseFloat(produto.preco.replace(',', '.')) * quantidade
+            )
+              .toFixed(2)
+              .replace('.', ',');
 
-          return (
-            <CarProduto
-              key={index}
-              nome={nome}
-              preco={precoTotal}
-              quantidade={quantidade}
-              imagemPath={produto.imagem}
-              botaoRemover={
-                <TouchableOpacity
-                  onPress={() => handleRemover(nome, quantidade)}>
-                  <Feather name="trash-2" size={36} color="red" />
-                </TouchableOpacity>
-              }
-            />
-          );
-        })}
+            return (
+              <CarProduto
+                key={index}
+                nome={nome}
+                preco={precoTotal}
+                quantidade={quantidade}
+                imagemPath={produto.imagem}
+                botaoRemover={
+                  <TouchableOpacity
+                    onPress={() => handleRemover(nome, quantidade)}>
+                    <Feather name="trash-2" size={36} color="red" />
+                  </TouchableOpacity>
+                }
+              />
+            );
+          })
+        )}
       </ScrollView>
-
       <View style={styles.rodape}>
         <Text style={styles.totalTexto}>
           Total: R$ {totalCompra.toFixed(2).replace('.', ',')}
@@ -232,25 +240,20 @@ export default function Carrinho() {
               );
               navigation.navigate('Login');
             } else {
-              Alert.alert(
-                'Forma de Pagamento',
-                'Por favor, seleciona a forma de pagamento desejada.',
-                [
-                  {
-                    text: 'Pix',
-                    onPress: () => navigation.navigate('Pagamento'),
-                  },
-                  {
-                    text: 'Cancelar',
-                  },
-                ]
-              );
+              Alert.alert('Forma de Pagamento', 'Selecione o pagamento:', [
+                {
+                  text: 'Pix',
+                  onPress: () => navigation.navigate('Pagamento'),
+                },
+                { text: 'Cancelar' },
+              ]);
             }
           }}
           disabled={itensCarrinho.length === 0}>
           <Text style={styles.textoBotao}>Finalizar compra</Text>
         </Pressable>
       </View>
+      <BottonBar navigationNavbar={navigation} usuarioLogado={usuarioLogado} />
     </View>
   );
 }

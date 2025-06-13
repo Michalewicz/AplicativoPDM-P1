@@ -35,6 +35,7 @@ export default function ProdutosPage() {
       <View style={styles.bottomBar}>
         <BtAdd quantidade={quantidade} />
       </View>
+      
     </View>
   );
 }

@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar';
 import { styles } from './styles';
 import pix from '../../img/pix.png';
 import simbolo from '../../img/piquis.png';
+import BotBar from '../../components/botton_bar/index';
 
 export default function Pagamento() {
   return (
@@ -31,6 +32,8 @@ export default function Pagamento() {
         source={pix}
         style={{ width: 350, height: 350, alignSelf: 'center', marginTop: 20 }}
       />
+      
+    <BotBar />
     </View>
   );
 }

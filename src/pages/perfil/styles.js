@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     padding: 20,
+    paddingBottom:70,
   },
   titulo: {
     fontSize: 36,

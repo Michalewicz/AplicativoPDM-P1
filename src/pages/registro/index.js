@@ -22,23 +22,48 @@ export default function Registro() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [sexo, setSexo] = useState('Masculino');
+  const [cep, setCep] = useState('');
+  const [rua, setRua] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [complemento, setComplemento] = useState('');
+  const [numero, setNumero] = useState('');
   const [endereco, setEndereco] = useState('');
 
-  const validarEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+  const validarEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validarSenha = (senha) =>''
+  const validarCep = (cep) => /^\d{8}$/.test(cep);
+
+  const buscarEndereco = async () => {
+    if (!validarCep(cep)) {
+      Alert.alert('Erro', 'Digite um CEP válido com 8 dígitos.');
+      return;
+    }
+    try {
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const data = await response.json();
+
+      if (data.erro) {
+        Alert.alert('Erro', 'CEP não encontrado.');
+        return;
+      }
+
+      setRua(data.logradouro || '');
+      setBairro(data.bairro || '');
+      setCidade(data.localidade || '');
+      setComplemento(data.complemento || '');
+    } catch (error) {
+      Alert.alert('Erro', 'Erro ao buscar o CEP.');
+      console.error(error);
+    }
   };
-  const validarSenha = (senha) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
-    return regex.test(senha);
-  };
-  const validarEndereco = (endereco) => {
-    const regex = /^\d{8}$/;
-    return regex.test(endereco);
-  };
+
   const registrar = async () => {
-    if (!usuario || !senha || !confirmarSenha || !nome || !email || !endereco) {
-      Alert.alert('Erro', 'Preencha todos os campos.');
+    if (
+      !usuario || !senha || !confirmarSenha || !nome ||
+      !email || !cep || !rua || !bairro || !cidade || !numero
+    ) {
+      Alert.alert('Erro', 'Preencha todos os campos obrigatórios.');
       return;
     }
 
@@ -46,22 +71,16 @@ export default function Registro() {
       Alert.alert('Erro', 'As senhas não coincidem.');
       return;
     }
-
     if (!validarEmail(email)) {
       Alert.alert('Erro', 'Formato de e-mail inválido.');
       return;
     }
-    if (!validarSenha(senha)) {
-      Alert.alert('Erro', 'Formato de senha inválido.');
-      return;
-    }
-    if (!validarEndereco(endereco)) {
-      Alert.alert('Erro', 'Formato de CEP inválido.');
-      return;
-    }
+
+    const enderecoCompleto = `${rua}, ${numero}, ${bairro}, ${complemento}, ${cidade}`;
+    setEndereco(enderecoCompleto.trim().replace(/\s{2,}/g, ' '));
+
     try {
       const caminho = FileSystem.documentDirectory + 'usuarios.json';
-
       let usuarios = {};
       const existe = await FileSystem.getInfoAsync(caminho);
 
@@ -87,7 +106,7 @@ export default function Registro() {
         nome,
         email,
         sexo,
-        endereco,
+        endereco: enderecoCompleto,
       };
 
       await FileSystem.writeAsStringAsync(
@@ -171,14 +190,41 @@ export default function Registro() {
           </Picker>
         </View>
 
-        <Text style={styles.label}>Endereço:</Text>
+        <Text style={styles.label}>CEP:</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
+          <TextInput
+            style={[styles.input, { flex: 1 }]}
+            value={cep}
+            onChangeText={setCep}
+            placeholder="Digite seu CEP"
+            keyboardType="numeric"
+            placeholderTextColor="#888"
+          />
+          <View style = {styles.btBusca}>
+            <Pressable onPress={buscarEndereco} style={styles.botaoBuscarCep}>
+              <Text style={styles.txtBotao}>Buscar</Text>
+            </Pressable>
+          </View>
+        </View>
+
+        <Text style={styles.label}>Rua:</Text>
+        <TextInput style={styles.input} value={rua} onChangeText={setRua} />
+
+        <Text style={styles.label}>Número:</Text>
+        <TextInput style={styles.input} value={numero} onChangeText={setNumero} />
+
+        <Text style={styles.label}>Complemento:</Text>
         <TextInput
           style={styles.input}
-          value={endereco}
-          onChangeText={setEndereco}
-          placeholder="Digite seu CEP"
-          placeholderTextColor="#888"
+          value={complemento}
+          onChangeText={setComplemento}
         />
+
+        <Text style={styles.label}>Bairro:</Text>
+        <TextInput style={styles.input} value={bairro} onChangeText={setBairro} />
+
+        <Text style={styles.label}>Cidade:</Text>
+        <TextInput style={styles.input} value={cidade} onChangeText={setCidade} />
 
         <Pressable style={styles.botao} onPress={registrar}>
           <Text style={styles.txtBotao}>Registrar</Text>

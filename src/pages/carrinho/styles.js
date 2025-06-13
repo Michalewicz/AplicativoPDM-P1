@@ -25,6 +25,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 6,
     shadowOffset: { width: 0, height: -2 },
     elevation: 10,
+    marginBottom: 60,
   },
   totalTexto: {
     fontSize: 20,

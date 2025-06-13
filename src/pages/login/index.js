@@ -11,7 +11,7 @@ import Navbar from '../../components/navbar';
 import { styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import * as FileSystem from 'expo-file-system';
-
+import BotBar from '../../components/botton_bar/index';
 // Carregando os dados padrão
 import usuariosIniciais from '../../fakeBD/usuarios.json';
 
@@ -108,6 +108,7 @@ export default function Login() {
           </Pressable>
         </View>
       </ScrollView>
+      <BotBar />
     </View>
   );
 }

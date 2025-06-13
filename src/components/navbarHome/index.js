@@ -13,22 +13,6 @@ export default function NavbarHome() {
         style={styles.logo}
         resizeMode="contain"
       />
-      <View style={styles.loginContainer}>
-        <TouchableOpacity
-          style={styles.login}
-          onPress={() =>
-            usuarioLogado === null
-              ? navigationNavbar.navigate('Login')
-              : navigationNavbar.navigate('Perfil')
-          }>
-          <EvilIcons name="user" size={40} color="white" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.cart}
-          onPress={() => navigationNavbar.navigate('Carrinho')}>
-          <Ionicons name="cart" size={40} color="white" />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }

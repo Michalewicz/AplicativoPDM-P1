@@ -4,33 +4,10 @@ import { styles } from './styles';
 import { usuarioLogado, desconectarUsuario } from '../login/index.js';
 import fotoPerfil from '../../img/fotoperfil.png';
 import { useNavigation } from '@react-navigation/native';
-import api from '../../services/api';
-import React, { useState, useEffect } from 'react';
+import BotBar from '../../components/botton_bar/index';
 
 export default function Perfil() {
   const navigation = useNavigation();
-
-  const [endrco, setEndrco] = useState(null);
-
-  useEffect(() => {
-    const fetchEndereco = async () => {
-      if (usuarioLogado && usuarioLogado.endereco) {
-        try {
-          const response = await api.get('/' + usuarioLogado.endereco + '/json/');
-          setEndrco(response.data);
-        } catch (error) {
-          console.error('Erro ao buscar endereço:', error);
-        }
-      }
-    };
-
-    fetchEndereco();
-  }, []);
-
-  const end =
-    endrco
-      ? `${endrco.logradouro}, ${endrco.bairro}, ${endrco.localidade} - ${endrco.uf}`
-      : 'Não informado';
 
   return (
     <View style={styles.borda}>
@@ -51,7 +28,7 @@ export default function Perfil() {
         <Text style={styles.valor}>{usuarioLogado?.sexo || 'Não informado'}</Text>
 
         <Text style={styles.label}>Endereço:</Text>
-        <Text style={styles.valor}>{end}</Text>
+        <Text style={styles.valor}>{usuarioLogado?.endereco || 'Não informado'}</Text>
 
         <Pressable
           style={styles.btDesconectar}
@@ -63,6 +40,7 @@ export default function Perfil() {
           <Text style={styles.txtDesconectar}>Desconectar</Text>
         </Pressable>
       </ScrollView>
+      <BotBar/>
     </View>
   );
 }

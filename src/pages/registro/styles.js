@@ -77,4 +77,11 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.5,
   },
+  btBusca:{
+    backgroundColor:'green',
+    size:'40',
+  },
+  botaoBuscarCep:{
+    alignSelf:'center'
+  }
 });
